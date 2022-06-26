@@ -1,0 +1,30 @@
+<h1>Register</h1>
+
+<form [formGroup]="registerForm" (ngSubmit)="handleRegister()">
+  <div>
+    <label>Name:
+      <input type="text" formControlName="name">
+    </label>
+  </div>
+  <div *ngIf="registerForm.get('name')?.errors && registerForm.get('name')?.dirty">
+    <p *ngIf="registerForm.get('name')?.hasError('required')">Name input is required.</p>
+    <p *ngIf="registerForm.get('name')?.hasError('minlength')">Name requires at least 2 characters.</p>
+  </div>
+  <div>
+    <label>Email:
+      <input type="text" formControlName="email">
+    </label>
+  </div>
+  <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.dirty">
+    <p>Email input is required.</p>
+  </div>
+  <div>
+    <label>Password:
+      <input type="password" formControlName="password">
+    </label>
+  </div>
+  <div *ngIf="registerForm.get('password')?.errors">
+    <p>Password requires at least 6 characters.</p>
+  </div>
+  <button type="submit" [disabled]="registerForm.invalid">Register</button>
+</form>

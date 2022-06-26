@@ -1,0 +1,13 @@
+<h1>Product</h1>
+<div *ngIf="isLoading">
+  Loading...
+</div>
+<div *ngIf="!isLoading">
+  <div *ngIf="hasError">
+    Error: {{hasError}}
+  </div>
+  <div *ngIf="!hasError">
+    <h2>{{product?.title}}</h2>
+    <p>{{product?.price | currency}}</p>
+  </div>
+</div>

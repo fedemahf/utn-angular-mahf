@@ -1,0 +1,11 @@
+<h1>Home</h1>
+
+<p *ngIf="isLoading">Loading...</p>
+
+<div *ngIf="!isLoading">
+  <div *ngFor="let product of products">
+      <h2>{{product.title}}</h2>
+      <p>{{product.price | currency}}</p>
+      <button routerLink="/product/{{product.id}}">Details</button>
+  </div>
+</div>
