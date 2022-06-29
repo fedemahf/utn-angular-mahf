@@ -11,3 +11,11 @@ body, button, input {
 input, button {
   margin: 0.1em 0;
 }
+
+button {
+  cursor: pointer;
+}
+
+.disabled {
+  cursor: not-allowed;
+}

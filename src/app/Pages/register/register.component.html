@@ -26,5 +26,5 @@
   <div *ngIf="registerForm.get('password')?.errors">
     <p>Password requires at least 6 characters.</p>
   </div>
-  <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  <button type="submit" [disabled]="registerForm.invalid" [ngClass]="{disabled: registerForm.invalid}">Register</button>
 </form>
