@@ -5,6 +5,7 @@
 <div *ngIf="!isLoading">
   <div *ngFor="let product of products">
       <h2>{{product.title}}</h2>
+      <img src="{{product.thumbnail}}" alt="{{product.title}}">
       <p>{{product.price | currency}}</p>
       <button routerLink="/product/{{product.id}}">Details</button>
   </div>
