@@ -10,8 +10,12 @@ export class MercadoPagoService {
     private http: HttpClient
   ) { }
 
-  getAll(productName: string) {
-    return lastValueFrom(this.http.get(`https://api.mercadolibre.com/sites/MLA/search?q=${productName}`));
+  getAll(productName: string, limit?: number) {
+    let url = `https://api.mercadolibre.com/sites/MLA/search?q=${productName}`;
+    if (limit) {
+      url += `&limit=${limit}`;
+    }
+    return lastValueFrom(this.http.get(url));
   }
 
   getById(productId: string): Promise<any> {

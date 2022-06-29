@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   ) {
     this.isLoading = true;
 
-    this.mercadoPagoService.getAll("iPhone")
+    this.mercadoPagoService.getAll("iPhone", 5)
       .then((data: any) => {
         this.products = data.results;
       })
