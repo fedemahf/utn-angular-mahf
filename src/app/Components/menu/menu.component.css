@@ -1,0 +1,10 @@
+.link {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.link:active {
+  color: red;
+}
+
