@@ -17,24 +17,27 @@ export class ProductComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private mercadoPagoService: MercadoPagoService
   ) { 
-    this.isLoading = true;
     const productId = this.activatedRoute.snapshot.paramMap.get("id")
 
     if (productId) {
-      this.mercadoPagoService.getById(productId)
-        .then(data => {
-          this.product = data;
-        })
-        .catch(error => {
-          this.hasError = error.error.error; // yep, this is correct
-        })
-        .finally(() => {
-          this.isLoading = false
-        });
+      this.isLoading = true;
+      this.getProductInformation(productId);
     } else {
-      this.hasError = "Unknown product ID.";
       this.isLoading = false;
+      this.hasError = "Unknown product ID.";
     }
+  }
+
+  async getProductInformation(productId: string) {
+    try {
+      const resultProduct = await this.mercadoPagoService.getById(productId)
+      const resultDescription = await this.mercadoPagoService.getDescriptionById(productId);
+      this.product = resultProduct;
+      this.product.description = resultDescription.plain_text;
+    } catch (error: any) {
+      this.hasError = error.error.error; // yep, this is correct
+    }
+    this.isLoading = false;
   }
 
   ngOnInit(): void {

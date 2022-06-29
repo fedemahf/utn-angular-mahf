@@ -8,6 +8,13 @@
   </div>
   <div *ngIf="!hasError">
     <h2>{{product?.title}}</h2>
-    <p>{{product?.price | currency}}</p>
+    <div>
+      <img *ngFor="let picture of product?.pictures" src="{{picture.secure_url}}">
+    </div>
+    <p>{{product?.description}}</p>
+    <h4>{{product?.price | currency}}</h4>
+    <button type="button" routerLink="/">Go back</button>
+    {{' '}}
+    <button type="button" disabled>Buy</button>
   </div>
 </div>

@@ -21,5 +21,9 @@ export class MercadoPagoService {
   getById(productId: string): Promise<any> {
     return lastValueFrom(this.http.get(`https://api.mercadolibre.com/items/${productId}`));
   }
+
+  getDescriptionById(productId: string): Promise<any> {
+    return lastValueFrom(this.http.get(`https://api.mercadolibre.com/items/${productId}/description`));
+  }
 }
 
